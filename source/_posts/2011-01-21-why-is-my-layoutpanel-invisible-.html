@@ -1,0 +1,26 @@
+---
+layout: post
+title: Why is my LayoutPanel invisible?!
+published: true
+---
+<p>This is just a quick post in the hope that I can help others avoid <em>hours</em> debugging an &ldquo;issue&rdquo; I recently had. I was working through a new application that I&rsquo;m building using the new MVP framework in GWT 2.1, and for the life in me couldn&rsquo;t understand why the <code>LayoutPanel</code> I was adding to the page was not invisible. The code could be as simple as this.</p>
+
+<p><script src="https://gist.github.com/789106.js"></script></p>
+
+<p>I could clearly see it was added to the DOM when I poked around with Web Inspector, but it just wasn&rsquo;t visible. I made sure my HTML doctype was set to standards mode. Dumbfounded, I went to the <a href="http://code.google.com/webtoolkit/doc/latest/DevGuideUiPanels.html">GWT documentation on Panels</a>, and sure enough, found the <code>RootLayoutPanel</code>. <code>*LayoutPanel</code>s need to be added to the <code>RootLayoutPanel</code>, not the <code>RootPanel</code>.</p>
+
+<p><script src="https://gist.github.com/789112.js"></script></p>
+
+<p>Works perfectly.</p>
+
+<p>I found this hidden/invisible issue comes up with most <code>*LayoutPanel</code> panels added to <code>RootPanel</code>. The same effect is experienced when you stick these panels into an <code>HTMLPanel</code>, as is customary when writing UiBinder code.</p>
+
+<p><script src="https://gist.github.com/789201.js"></script></p>
+
+<p>Of course, the previously mentioned <a href="http://code.google.com/webtoolkit/doc/latest/DevGuideUiPanels.html">GWT documentation</a> clearly states at the end.</p>
+
+<blockquote class="posterous_medium_quote"><p><em>When should I not use layout panels?</em></p>
+
+<p>The panels described above are best used for defining your application&rsquo;s outer structure — that is, the parts that are the least &ldquo;document-like&rdquo;. You should continue to use basic widgets and HTML structure for those parts for which the HTML/CSS layout algorithm works well. In particular, consider using UiBinder templates to directly use HTML wherever that makes sense.</p></blockquote>
+
+<p>The documentation points out the misuse of <code>*LayoutPanel</code>. However, I was thinking a good usability feature would be to display a warning that the <code>*LayoutPanel</code> is being abused. This warning should probably be in Development Mode. If you&rsquo;d like to see something along those lines, please <a href="http://code.google.com/p/google-web-toolkit/issues/detail?id=5874">star the issue I created</a></p>

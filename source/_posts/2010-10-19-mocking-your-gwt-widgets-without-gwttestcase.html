@@ -1,0 +1,40 @@
+---
+layout: post
+title: Mocking your GWT widgets, without GWTTestCase
+published: true
+---
+<p>When unit testing, mocking out your dependencies is standard practice. GWT is no exception. However, as you will discover, mocking your UI in GWT doesn&rsquo;t work as you might expect.</p>
+
+<p>Before we start with a sample, I just wanted to mention some best practices around GWT. It&rsquo;s generally considered a best practice to use the Model-View-Presenter pattern (<a href="http://code.google.com/webtoolkit/articles/mvp-architecture.html">Part I</a>, <a href="http://code.google.com/webtoolkit/articles/mvp-architecture-2.html">Part II</a>, <a href="http://code.google.com/webtoolkit/doc/trunk/DevGuideMvpActivitiesAndPlaces.html">GWT 2.1 method</a>). When you use this pattern, you avoid writing tests for your Views because they don&rsquo;t contain any logic.</p>
+
+<p>However, if you&rsquo;re not following this pattern for whatever reason (existing code base, legacy, etc), you&rsquo;ll want to unit test your UI logic. Furthermore, if you read the GWT 2.1 way of implementing MVP using Activities, you&rsquo;ll find that some logic, like event handling, may creep into your Views for convenience sake. Therefore, I hope you find this useful in general.</p>
+
+<p>Let&rsquo;s build a simple example view.</p>
+
+<p><script src="https://gist.github.com/634307.js"></script></p>
+
+<p>With the class in place, we&rsquo;d like to unit test the <code>validUsernameAndPassword</code> method. Using my favourite unit testing framework <a href="http://testng.org/doc/index.html">TestNG</a> and mocking framework <a href="http://mockito.org/">Mockito</a>, we&rsquo;d come up with something like the following.</p>
+
+<p><script src="https://gist.github.com/634324.js"></script></p>
+
+<p>Seems simple enough. But if you try to run this test, you&rsquo;ll be greeted with the following error.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>java.lang.ExceptionInInitializerError
+    at sun.reflect.GeneratedSerializationConstructorAccessor1.newInstance(Unknown Source)
+    at java.lang.reflect.Constructor.newInstance(Constructor.java:513)
+
+...
+
+Caused by: java.lang.UnsupportedOperationException: ERROR: GWT.create() is only usable in client code!  It cannot be called, for example, from server code.  If you are running a unit test, check that your test case extends GWTTestCase and that GWT.create() is not called from within an initializer or constructor.
+    at com.google.gwt.core.client.GWT.create(GWT.java:92)
+    at com.google.gwt.user.client.ui.UIObject.(UIObject.java:179)
+    ... 42 more</pre></div>
+</div>
+
+
+<p>What this is telling you is that you have to run these tests in a <code>GWTTestCase</code>, not a standard TestNG test. If you&rsquo;ve had experience with <code>GWTTestCase</code>, you know it&rsquo;s very slow to initialize and not something you want to use for unit tests. To get around this, we have to use a secret class that&rsquo;s not even documented in the Java doc, <code>GWTMockUtilities</code>. The test class now looks like this.</p>
+
+<p><script src="https://gist.github.com/634326.js"></script></p>
+
+<p>Viola! Your tests pass as you expect them to. Hope that helps anyone doing UI unit testing in GWT.</p>

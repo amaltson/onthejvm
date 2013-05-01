@@ -1,0 +1,61 @@
+---
+layout: post
+title: GWT Data Bindings Part 1 - First Look
+published: true
+---
+<p>With the <a href="http://googlewebtoolkit.blogspot.com/2010/10/announcing-final-release-of-gwt-21.html">release of GWT 2.1</a>, I&rsquo;m going to try to put together a blog post about each of the new features. We&rsquo;ll start off with my favourite addition, the data binding framework. If you are interested in GWT 2.1 coverage, make sure to check out <a href="http://tbroyer.posterous.com/">Thomas Broyer&rsquo;s blog</a>, which covers <a href="http://tbroyer.posterous.com/gwt-21-places">Places</a> <a href="http://tbroyer.posterous.com/gwt-21-places-part-ii">extensively</a> and <a href="http://tbroyer.posterous.com/gwt-21-activities">Activities</a> with <a href="http://tbroyer.posterous.com/gwt-21-places-activities-what-changed-between">nesting</a>. Last, but certainly not least, the excellent <a href="http://code.google.com/webtoolkit/doc/latest/DevGuide.html">GWT documentation</a> has been updated to include 2.1 features.</p>
+
+<p>One of the killer features in GWT 2.1 is data bindings. The GWT blog put it best.</p>
+
+<blockquote class="posterous_medium_quote"><p>Data bound views &ndash; An app that doesn’t allow end users to view or edit data isn’t terribly useful, now, is it? With GWT 2.1’s Data Editors, developers can create views that are generated from their app’s data model. These views are completely customizable, and handle all of the nasty work of syncing change sets between the client and server.</p></blockquote>
+
+<p>While data bindings are not new by any means, you usually find them in more traditional web frameworks like Seam, Spring Web Flow, etc. Now, this powerful paradigm has found it&rsquo;s way into the best (IMHO) RIA framework.</p>
+
+<h2>Single Binding</h2>
+
+<p>Let&rsquo;s cover the simplest case, data binding a single Java bean. For example, a simple <code>Email</code> POJO.</p>
+
+<p><script src="https://gist.github.com/656826.js"></script></p>
+
+<p>The <code>Serializable</code> implementation is only required for GWT-RPC calls, not the Editors framework. Also note that these objects do need getters and setters, you can&rsquo;t modify immutable objects. Immutable objects can only be used for display.</p>
+
+<p>Now you need a GWT widget to represent the <code>Email</code> object.</p>
+
+<p><script src="https://gist.github.com/660486.js"></script></p>
+
+<p><code>EmailEditor</code> is a standard GWT widget, the only new piece is the <code>Editor&lt;Email&gt;</code> bit. This is the cue telling GWT that it is indeed a data bindable widget. If the field in the widget is named the same as the corresponding POJO field, the binding is automagic. Otherwise, you can use the <code>@Path("")</code> annotation to indicate the name of the field (or reach into nested values).</p>
+
+<p>The final piece in the data binding story is the interface that will be GWT generated with the GWT.create() call. This does the required code generation to do automatic data binding.</p>
+
+<p><script src="https://gist.github.com/660479.js"></script></p>
+
+<p>This code could either go in some new class, or could be stuffed into the Presenter component if you follow the MVP pattern. Regardless, that&rsquo;s all you need to bind to a single object.</p>
+
+<p>Of course, in most cases, you have an entire object graph, so lets move on to binding a whole object graph.</p>
+
+<h2>Nested Binding</h2>
+
+<p>It turns out that data binding an object graph is as easy as binding to a single object. Take the <code>Customer</code> object.</p>
+
+<p><script src="https://gist.github.com/665651.js"></script></p>
+
+<p>Again, a regular POJO like we&rsquo;ve seen before, but this time it has an nested <code>Email</code> and <code>Address</code>. Let&rsquo;s take a look at what the <code>Editor</code> looks like.</p>
+
+<p><script src="https://gist.github.com/665655.js"></script></p>
+
+<p>As you would expect, editing the nested objects only requires including the editors for those nested objects. Finally, instead of having a <code>Driver</code> for each <code>Editor</code>, you create one <code>Driver</code> for the top-level <code>Editor</code>. In this case we define the driver in the entry point.</p>
+
+<p><script src="https://gist.github.com/665656.js"></script></p>
+
+<p>That&rsquo;s about it. All your existing boilerplate that does data binding evaporates with some GWT generator magic.</p>
+
+<p>We&rsquo;re done for now. Part 2 will dive deeper into <code>Editors</code> and explain using interfaces, integration with GIN and using <code>Editors</code> with the new MVP framework.</p>
+
+<h2>More Information</h2>
+
+<p>Some additional documentation to check out for now.</p>
+
+<ul>
+<li><p><a href="http://code.google.com/webtoolkit/doc/latest/DevGuideUiEditors.html">GWT editor documentation</a>.</p></li>
+<li><p><a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/editor/client/package-summary.html">GWT editor Javadoc</a></p></li>
+</ul>
