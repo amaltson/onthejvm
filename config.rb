@@ -4,10 +4,10 @@ require 'sass-globbing'
 project_type = :stand_alone
 
 # Publishing paths
-http_path = "/onthejvm/"
-http_images_path = "/onthejvm/images"
-http_fonts_path = "/onthejvm/fonts"
-css_dir = "public/onthejvm/stylesheets"
+http_path = "/"
+http_images_path = "/images"
+http_fonts_path = "/fonts"
+css_dir = "public/stylesheets"
 
 # Local development paths
 sass_dir = "sass"
