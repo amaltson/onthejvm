@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[On the JVM]]></title>
-  <link href="http://onthejvm.com//github/atom.xml" rel="self"/>
-  <link href="http://onthejvm.com//github/"/>
-  <updated>2014-01-31T22:29:38-05:00</updated>
-  <id>http://onthejvm.com//github/</id>
+  <link href="http://amaltson.github.io/onthejvm/atom.xml" rel="self"/>
+  <link href="http://amaltson.github.io/onthejvm/"/>
+  <updated>2014-01-31T22:33:46-05:00</updated>
+  <id>http://amaltson.github.io/onthejvm/</id>
   <author>
     <name><![CDATA[Arthur Maltson]]></name>
     
@@ -14,10 +14,58 @@
 
   
   <entry>
+    <title type="html"><![CDATA[A tale of tmux, a bell and the perpetuity of time]]></title>
+    <link href="http://amaltson.github.io/onthejvm/blog/2014/01/31/a-tale-of-tmux-a-bell-and-the-perpetuity-of-time/"/>
+    <updated>2014-01-31T14:03:00-05:00</updated>
+    <id>http://amaltson.github.io/onthejvm/blog/2014/01/31/a-tale-of-tmux-a-bell-and-the-perpetuity-of-time</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been using <a href="http://tmux.sourceforge.net/">tmux</a> for a while and love it.
+I had heard of tmux on various podcasts and through Twitter, but I was finally
+convinced to try it in early 2012 after listening to the <a href="http://thechangelog.com/73/">tmux episode on the Changelog</a>
+(excellent podcast by-the-way). I went out and got the book that was the topic
+of the podcast, <a href="http://pragprog.com/book/bhtmux/tmux">tmux: Productive Mouse-Free Development</a>.</p>
+
+<p>After some experimentation, I got into a good workflow with tmux. I particularly
+like using tmux with <a href="https://github.com/aziz/tmuxinator">tmuxinator</a> to set up
+projects and easily launch a full tmux environment with all my panes and windows
+running the applications I configured in the tmuxinator YAML file.</p>
+
+<p>As much as I loved tmux, one thing really bugged me. If I had several tmux
+sessions open, which I was prone to do as I&rsquo;d move from project to project, the
+bell kept going off. When I say bell, I mean the terminal bell. It&rsquo;d go off
+regardless of whether something was happening in that tmux session. I use iTerm
+and Growl, so bell events end up popping up through Growl. This is actually
+super useful. When you have a long running task in a tab you&rsquo;re not looking at,
+when the tab completes and becomes idle, I get a nice Growl alert. It&rsquo;s not so
+useful when it happens all the time and nothing actually happens in the tab.</p>
+
+<p><img src="http://amaltson.github.io/onthejvm/images/tmux-bell.png" alt="tmux-bell" /></p>
+
+<p>I did a bunch of Googling trying to figure out why it was happening, thinking it
+might be a tmux bug, or an iTerm bug. I came up with nothing, so I forgot about
+it and just ignored the Growl notifications. Then, all the sudden, on day it
+dawned on me. I looked at the corner of my tmux window and there was the answer.</p>
+
+<p>The corner of the tmux window holds the tmux status bar. As it turns out,
+the default tmux configuration holds the date and <strong>time</strong>, in <strong>minutes</strong>.
+Every minute, each tab that&rsquo;s running tmux updates to display the current time.
+Time keeps going forward and every minute I got an alert.</p>
+
+<p>The solution was easy, change the default status bar to only show the day and
+month.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>set -g status-right "#T %d %b"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Voila! Now my bells and Growl notifications are useful again.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Being Productive on OS X]]></title>
-    <link href="http://onthejvm.com//github/blog/2011/09/12/being-productive-on-os-x/"/>
+    <link href="http://amaltson.github.io/onthejvm/blog/2011/09/12/being-productive-on-os-x/"/>
     <updated>2011-09-12T00:00:00-04:00</updated>
-    <id>http://onthejvm.com//github/blog/2011/09/12/being-productive-on-os-x</id>
+    <id>http://amaltson.github.io/onthejvm/blog/2011/09/12/being-productive-on-os-x</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve been a Mac OS X user for about 3 years now, and a Linux user before that. I
 was originally attracted to the Mac not for the hardware (although it&rsquo;s
 nice), but for the software. My first taste came from a home made Hackintosh,
@@ -160,9 +208,9 @@ photography, and this has been the best app I&rsquo;ve found so far. <em>paid</e
   
   <entry>
     <title type="html"><![CDATA[Getting into Node]]></title>
-    <link href="http://onthejvm.com//github/blog/2011/04/27/getting-into-node/"/>
+    <link href="http://amaltson.github.io/onthejvm/blog/2011/04/27/getting-into-node/"/>
     <updated>2011-04-27T00:00:00-04:00</updated>
-    <id>http://onthejvm.com//github/blog/2011/04/27/getting-into-node</id>
+    <id>http://amaltson.github.io/onthejvm/blog/2011/04/27/getting-into-node</id>
     <content type="html"><![CDATA[<p><strong>Updated 2011-04-27:</strong> forgot to add Backbone.js</p>
 
 <p>Most of the net is <a href="http://mashable.com/2011/03/10/node-js/">abuzz</a> about <a href="http://nodejs.org/">Node</a>,
@@ -344,9 +392,9 @@ you&rsquo;ve been sitting on the fence, now is a great time to jump in.</p>
   
   <entry>
     <title type="html"><![CDATA[Proposals for Google I/O 2012]]></title>
-    <link href="http://onthejvm.com//github/blog/2011/02/09/proposals-for-google-i-o-2012/"/>
+    <link href="http://amaltson.github.io/onthejvm/blog/2011/02/09/proposals-for-google-i-o-2012/"/>
     <updated>2011-02-09T00:00:00-05:00</updated>
-    <id>http://onthejvm.com//github/blog/2011/02/09/proposals-for-google-i-o-2012</id>
+    <id>http://amaltson.github.io/onthejvm/blog/2011/02/09/proposals-for-google-i-o-2012</id>
     <content type="html"><![CDATA[<p>I&rsquo;ll preempt this post by saying I wasn&rsquo;t able to register for Google I/O. Like many other people, I was caught up in the server crashes that happened the minute the tickets were announced. I have a feeling our corporate firewall had to do something with my inability to reach the website, and when I tried it on my Nexus One, I got the message that it was sold out (I&rsquo;ve looked for that PK session token, but I didn&rsquo;t get one because I wasn&rsquo;t able to get far enough in the registration). I&rsquo;ve been trying to go to Google I/O for 3 years now, and this year was the year I had everything in order for registration. I was very disappointed.</p>
 
 <h1>The Stampede</h1>
@@ -389,9 +437,9 @@ you&rsquo;ve been sitting on the fence, now is a great time to jump in.</p>
   
   <entry>
     <title type="html"><![CDATA[Why is my LayoutPanel invisible?!]]></title>
-    <link href="http://onthejvm.com//github/blog/2011/01/21/why-is-my-layoutpanel-invisible-/"/>
+    <link href="http://amaltson.github.io/onthejvm/blog/2011/01/21/why-is-my-layoutpanel-invisible-/"/>
     <updated>2011-01-21T00:00:00-05:00</updated>
-    <id>http://onthejvm.com//github/blog/2011/01/21/why-is-my-layoutpanel-invisible-</id>
+    <id>http://amaltson.github.io/onthejvm/blog/2011/01/21/why-is-my-layoutpanel-invisible-</id>
     <content type="html"><![CDATA[<p>This is just a quick post in the hope that I can help others avoid <em>hours</em> debugging an &ldquo;issue&rdquo; I recently had. I was working through a new application that I&rsquo;m building using the new MVP framework in GWT 2.1, and for the life in me couldn&rsquo;t understand why the <code>LayoutPanel</code> I was adding to the page was not invisible. The code could be as simple as this.</p>
 
 <p><script src="https://gist.github.com/789106.js"></script></p>
@@ -418,9 +466,9 @@ you&rsquo;ve been sitting on the fence, now is a great time to jump in.</p>
   
   <entry>
     <title type="html"><![CDATA[GWT Data Bindings Part 1 - First Look]]></title>
-    <link href="http://onthejvm.com//github/blog/2010/11/08/gwt-data-bindings-part-1-first-look/"/>
+    <link href="http://amaltson.github.io/onthejvm/blog/2010/11/08/gwt-data-bindings-part-1-first-look/"/>
     <updated>2010-11-08T00:00:00-05:00</updated>
-    <id>http://onthejvm.com//github/blog/2010/11/08/gwt-data-bindings-part-1-first-look</id>
+    <id>http://amaltson.github.io/onthejvm/blog/2010/11/08/gwt-data-bindings-part-1-first-look</id>
     <content type="html"><![CDATA[<p>With the <a href="http://googlewebtoolkit.blogspot.com/2010/10/announcing-final-release-of-gwt-21.html">release of GWT 2.1</a>, I&rsquo;m going to try to put together a blog post about each of the new features. We&rsquo;ll start off with my favourite addition, the data binding framework. If you are interested in GWT 2.1 coverage, make sure to check out <a href="http://tbroyer.posterous.com/">Thomas Broyer&rsquo;s blog</a>, which covers <a href="http://tbroyer.posterous.com/gwt-21-places">Places</a> <a href="http://tbroyer.posterous.com/gwt-21-places-part-ii">extensively</a> and <a href="http://tbroyer.posterous.com/gwt-21-activities">Activities</a> with <a href="http://tbroyer.posterous.com/gwt-21-places-activities-what-changed-between">nesting</a>. Last, but certainly not least, the excellent <a href="http://code.google.com/webtoolkit/doc/latest/DevGuide.html">GWT documentation</a> has been updated to include 2.1 features.</p>
 
 <p>One of the killer features in GWT 2.1 is data bindings. The GWT blog put it best.</p>
@@ -482,9 +530,9 @@ you&rsquo;ve been sitting on the fence, now is a great time to jump in.</p>
   
   <entry>
     <title type="html"><![CDATA[Mocking your GWT widgets, without GWTTestCase]]></title>
-    <link href="http://onthejvm.com//github/blog/2010/10/19/mocking-your-gwt-widgets-without-gwttestcase/"/>
+    <link href="http://amaltson.github.io/onthejvm/blog/2010/10/19/mocking-your-gwt-widgets-without-gwttestcase/"/>
     <updated>2010-10-19T00:00:00-04:00</updated>
-    <id>http://onthejvm.com//github/blog/2010/10/19/mocking-your-gwt-widgets-without-gwttestcase</id>
+    <id>http://amaltson.github.io/onthejvm/blog/2010/10/19/mocking-your-gwt-widgets-without-gwttestcase</id>
     <content type="html"><![CDATA[<p>When unit testing, mocking out your dependencies is standard practice. GWT is no exception. However, as you will discover, mocking your UI in GWT doesn&rsquo;t work as you might expect.</p>
 
 <p>Before we start with a sample, I just wanted to mention some best practices around GWT. It&rsquo;s generally considered a best practice to use the Model-View-Presenter pattern (<a href="http://code.google.com/webtoolkit/articles/mvp-architecture.html">Part I</a>, <a href="http://code.google.com/webtoolkit/articles/mvp-architecture-2.html">Part II</a>, <a href="http://code.google.com/webtoolkit/doc/trunk/DevGuideMvpActivitiesAndPlaces.html">GWT 2.1 method</a>). When you use this pattern, you avoid writing tests for your Views because they don&rsquo;t contain any logic.</p>
@@ -525,18 +573,18 @@ Caused by: java.lang.UnsupportedOperationException: ERROR: GWT.create() is only 
   
   <entry>
     <title type="html"><![CDATA[GWT: Defacto for Creating Rich Web Applications?]]></title>
-    <link href="http://onthejvm.com//github/blog/2010/09/27/gwt-defacto-for-creating-rich-web-applications-/"/>
+    <link href="http://amaltson.github.io/onthejvm/blog/2010/09/27/gwt-defacto-for-creating-rich-web-applications-/"/>
     <updated>2010-09-27T00:00:00-04:00</updated>
-    <id>http://onthejvm.com//github/blog/2010/09/27/gwt-defacto-for-creating-rich-web-applications-</id>
+    <id>http://amaltson.github.io/onthejvm/blog/2010/09/27/gwt-defacto-for-creating-rich-web-applications-</id>
     <content type="html"><![CDATA[Last year there was some fervent discussion on the GWT contributor mailing list on <a href="http://groups.google.com/group/google-web-toolkit-contributors/browse_thread/thread/6d4339fb17803e/114aecb2d910846f" target="_blank">supporting Scala</a> as a language alternative for writing GWT applications. The discussion was interesting, but I hadn&#39;t heard anything since and had assumed nothing happened. Turns out, I was <a href="http://scalagwt.gogoego.com/index.html" target="_blank">wrong</a>. While I can&#39;t claim to know much about Scala, the idea of writing GWT based applications in another language sounded really interesting. Reading on, I found an even more exciting idea, in Jribble. As put on the GWT Scala site.<br /> <p /><div><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i> Java source code does not want to be a target language.  It has restrictions against logically sound constructs that would be bad Java practice to write by hand.  Lex Spoon proposed a plan for an intermediate step, &quot;Loose Java,&quot; which we have christened Jribble (pronounced &quot;Dribble&quot;).</i></blockquote> <blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i><br /></i></blockquote><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i> Jribble is essentially Java with the interfering restrictions removed.  Lex: &quot;It&#39;s like a puddle of Java. It&#39;s also like drivel, which is appropriate enough for a language no one writes and no one reads. Computers can entertain themselves with it well enough.&quot;</i></blockquote> <p /><div>And what it could eventually lead to.</div><p /><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i> The Jribble concept is interesting as a target language, because it&#39;s likely to be an effective target for other JVM languages, not only Scala.  Any language that easily produces valid JVM bytecodes, but struggles to produce valid Java, might take advantage of Jribble as a bridge to GWT Javascript compilation.</i></blockquote> <p /><div><i>Other JVM languages?</i> Groovy, JRuby, Clojure anyone?</div><p /><div>GWT is becoming the platform of choice for Java developers*. More so with the <a href="http://googlewebtoolkit.blogspot.com/2010/09/google-relaunches-instantiations.html" target="_blank">Instantiation purchase</a> and collaboration with <a href="http://code.google.com/webtoolkit/business.html" target="_blank">VMware/SpringSource</a>. But the future could be even brighter. GWT could be the default compiler for writing rich web applications in any language of your choice. I&#39;ll be very excited to see how this evolves.</div> <p /><div>* I&#39;m just guessing here based on the 23000+ mailing list subscriptions and 2000+ tags on Stackoverflow (when compared with other frameworks).</div> </div>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Obligatory Introduction]]></title>
-    <link href="http://onthejvm.com//github/blog/2010/06/17/obligatory-introduction/"/>
+    <link href="http://amaltson.github.io/onthejvm/blog/2010/06/17/obligatory-introduction/"/>
     <updated>2010-06-17T00:00:00-04:00</updated>
-    <id>http://onthejvm.com//github/blog/2010/06/17/obligatory-introduction</id>
+    <id>http://amaltson.github.io/onthejvm/blog/2010/06/17/obligatory-introduction</id>
     <content type="html"><![CDATA[<h1>On Java</h1>
 
 <p>As the name suggests, I&rsquo;m mainly a Java developer. I like Java. I know, it&rsquo;s falling out of fashion with today&rsquo;s web hipsters, but there&rsquo;s a lot to like about the language and its environment. For one, I find the static typing bit to be very helpful in a larger team environment, especially when you&rsquo;re trying to piece together how someone else&rsquo;s application works. But I think Java really wins out in the ecosystem. The sheer amount of active, high quality, tools and libraries available, is often overwhelming. One could argue that this can be a disadvantage, but I believe that the more choice a developer has, the better.</p>
