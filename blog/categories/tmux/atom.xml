@@ -4,7 +4,7 @@
   <title><![CDATA[Category: tmux | On the JVM]]></title>
   <link href="http://amaltson.github.io/onthejvm/blog/categories/tmux/atom.xml" rel="self"/>
   <link href="http://amaltson.github.io/onthejvm/"/>
-  <updated>2014-01-31T22:33:46-05:00</updated>
+  <updated>2014-01-31T22:35:11-05:00</updated>
   <id>http://amaltson.github.io/onthejvm/</id>
   <author>
     <name><![CDATA[Arthur Maltson]]></name>
@@ -18,11 +18,15 @@
     <link href="http://amaltson.github.io/onthejvm/blog/2014/01/31/a-tale-of-tmux-a-bell-and-the-perpetuity-of-time/"/>
     <updated>2014-01-31T14:03:00-05:00</updated>
     <id>http://amaltson.github.io/onthejvm/blog/2014/01/31/a-tale-of-tmux-a-bell-and-the-perpetuity-of-time</id>
-    <content type="html"><![CDATA[<p>I&rsquo;ve been using <a href="http://tmux.sourceforge.net/">tmux</a> for a while and love it.
+    <content type="html"><![CDATA[<p><img src="http://upload.wikimedia.org/wikipedia/en/d/dd/The_Persistence_of_Memory.jpg" alt="perpetuity of time" /></p>
+
+<p>I&rsquo;ve been using <a href="http://tmux.sourceforge.net/">tmux</a> for a while and love it.
 I had heard of tmux on various podcasts and through Twitter, but I was finally
 convinced to try it in early 2012 after listening to the <a href="http://thechangelog.com/73/">tmux episode on the Changelog</a>
-(excellent podcast by-the-way). I went out and got the book that was the topic
-of the podcast, <a href="http://pragprog.com/book/bhtmux/tmux">tmux: Productive Mouse-Free Development</a>.</p>
+(excellent podcast by-the-way). <a href="http://pragprog.com/book/bhtmux/tmux">tmux: Productive Mouse-Free Development</a>,
+which was the topic of the podcast, is an excellent book for getting started
+with tmux. In the books short 88 pages it takes you from basics to advanced
+features to kick start your tmux development.</p>
 
 <p>After some experimentation, I got into a good workflow with tmux. I particularly
 like using tmux with <a href="https://github.com/aziz/tmuxinator">tmuxinator</a> to set up
@@ -30,32 +34,40 @@ projects and easily launch a full tmux environment with all my panes and windows
 running the applications I configured in the tmuxinator YAML file.</p>
 
 <p>As much as I loved tmux, one thing really bugged me. If I had several tmux
-sessions open, which I was prone to do as I&rsquo;d move from project to project, the
-bell kept going off. When I say bell, I mean the terminal bell. It&rsquo;d go off
-regardless of whether something was happening in that tmux session. I use iTerm
-and Growl, so bell events end up popping up through Growl. This is actually
-super useful. When you have a long running task in a tab you&rsquo;re not looking at,
-when the tab completes and becomes idle, I get a nice Growl alert. It&rsquo;s not so
-useful when it happens all the time and nothing actually happens in the tab.</p>
+sessions open, which I was prone to do as I&rsquo;d have several things on the go, the
+terminal bell kept going off. It would go off regardless of whether something was
+happening in that tmux session or not. I use iTerm and Growl, so bell events
+manifest themselves through Growl. This is actually surprisingly useful
+because when I have a long running task in a tab I&rsquo;m not looking at,
+when the task completes and the shell becomes idle, I get a nice Growl alert.
+Unfortunately, this feature is not so useful when it happens all the time and
+nothing actually happens in the tab.</p>
 
 <p><img src="/images/tmux-bell.png" alt="tmux-bell" /></p>
 
-<p>I did a bunch of Googling trying to figure out why it was happening, thinking it
+<p>I searched around extensively trying to figure out the issue thinking it
 might be a tmux bug, or an iTerm bug. I came up with nothing, so I forgot about
-it and just ignored the Growl notifications. Then, all the sudden, on day it
-dawned on me. I looked at the corner of my tmux window and there was the answer.</p>
+it and just ignored the Growl notifications. Then, all the sudden, one day I
+noticed that all the tabs ring their bell at the same time. Strange&hellip; what
+could it be? And then I looked at the corner of my tmux window and there
+was the answer.</p>
+
+<p><img src="/images/tmux-time.png" alt="tmux-time" /></p>
 
 <p>The corner of the tmux window holds the tmux status bar. As it turns out,
 the default tmux configuration holds the date and <strong>time</strong>, in <strong>minutes</strong>.
 Every minute, each tab that&rsquo;s running tmux updates to display the current time.
-Time keeps going forward and every minute I got an alert.</p>
+Time is ever perpetual, always marching forward, and always setting off bells in
+tmux sessions.</p>
 
-<p>The solution was easy, change the default status bar to only show the day and
-month.</p>
+<p>The solution was easy enough, change the default status bar to only show the day
+and month.</p>
 
 <p><code>
 set -g status-right "#T %d %b"
 </code></p>
+
+<p><img src="/images/tmux-date-no-time.png" alt="tmux-date-no-time" /></p>
 
 <p>Voila! Now my bells and Growl notifications are useful again.</p>
 ]]></content>
