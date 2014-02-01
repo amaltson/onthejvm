@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Proposals for Google I/O 2012 - On the JVM</title>
+  <meta name="author" content="Arthur Maltson">
+
+  
+  <meta name="description" content="I&rsquo;ll preempt this post by saying I wasn&rsquo;t able to register for Google I/O. Like many other people, I was caught up in the server crashes &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://onthejvm.com//github/blog/2011/02/09/proposals-for-google-i-o-2012">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="On the JVM" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17031534-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">On the JVM</a></h1>
+  
+    <h2>Interesting happenings on (and off) the JVM</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:onthejvm.com//github" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Proposals for Google I/O 2012</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-09T00:00:00-05:00" pubdate data-updated="true">Feb 9<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I&rsquo;ll preempt this post by saying I wasn&rsquo;t able to register for Google I/O. Like many other people, I was caught up in the server crashes that happened the minute the tickets were announced. I have a feeling our corporate firewall had to do something with my inability to reach the website, and when I tried it on my Nexus One, I got the message that it was sold out (I&rsquo;ve looked for that PK session token, but I didn&rsquo;t get one because I wasn&rsquo;t able to get far enough in the registration). I&rsquo;ve been trying to go to Google I/O for 3 years now, and this year was the year I had everything in order for registration. I was very disappointed.</p>
+
+<h1>The Stampede</h1>
+
+<p>From <em>@googleio</em><a href="http://twitter.com/#!/googleio/status/34681566059827200">RT @VicGundotra &ndash; Google I/O &lsquo;09 sold out in 90 days, &#8216;10 in 50 days&hellip; #io2011: 59 minutes. Holy moly.</a></p>
+
+<p>That&rsquo;s a drastic change from the previous years. Even Apple&rsquo;s WWDC sold out in 8 days last year. This might not come as a surprise, <a href="http://twitter.com/#!/googleio">@googleio</a> has 50K+ followers. At least 10% of those followers must be interested in coming to the conference. When the tweet went out that registration was open, the stampede of developers crushed the server. That might sounds strange, how can Google&rsquo;s servers not handle the load? Turns out that Google used a third party service called <a href="http://www.webeventsglobal.com/">WB Events Global</a> for their registration. The service was built using <em>Cold Fusion</em> on top of an IIS server. Not surprisingly, the server instantly crashed under the load.</p>
+
+<h1>The Reasons</h1>
+
+<p>Like most things in life, I don&rsquo;t think there is any one reason why Google I/O sold out so quickly.</p>
+
+<h2>Freebies help</h2>
+
+<p>In previous years Google has given out free phones during and before the conference. Like many people, I believe this is one of the main reasons behind many&rsquo;s choice. If the conference is paid for by one&rsquo;s employer, a free phone/tablet is even more attractive. However, if that&rsquo;s the case, it&rsquo;s kind of sad. Tech conferences are about learning and meeting people, not about parties and freebies.</p>
+
+<h2>Price is attractive</h2>
+
+<p>It&rsquo;s true that for those not living in the Bay Area, the flight and hotel expenses usually outweigh the conference price. But at $450, Google I/O is a bargain. Most tech conferences are $1-1.5K.</p>
+
+<h2>Android rising</h2>
+
+<p>Finally, I&rsquo;m starting to believe that Android&rsquo;s exponential is a big draw. Many developers no doubt want to get a head start developing the next great Android app, or help their employer navigate the mobile world.</p>
+
+<h1>The Proposals</h1>
+
+<h2>Have a separate Android event</h2>
+
+<p>I think it might make sense to have a separate Android event instead of rolling everything up into one giant conference. Maybe have one <em>everything</em> Android conference and one <em>everything else</em> conference (GWT, AppEngine, OpenSocial, etc). I guess depending on how full the Android sessions will be would drive this.</p>
+
+<h2>Rent all of Moscone</h2>
+
+<p>You could have Google I/O in all the Moscone buildings like JavaOne used to be. But I&rsquo;ve read good reasons why a 15K developer conference just isn&rsquo;t the same. Having large auditoriums for 300+ people doesn&rsquo;t give you the intimacy you normally get from a conference.</p>
+
+<h2>Dealing with Freebies</h2>
+
+<p>To discourage those that register for the conference just to get a freebie, I love <a href="http://justinsb.posterous.com/why-google-shouldnt-give-away-anything-this-y">Justin&rsquo;s idea</a> of not giving out a freebie and letting everyone who wants a refund get one. Google I/O brings more then enough to the table, a free phone shouldn&rsquo;t be your main deciding factor.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Arthur Maltson</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-09T00:00:00-05:00" pubdate data-updated="true">Feb 9<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://onthejvm.com//github/blog/2011/02/09/proposals-for-google-i-o-2012/" data-via="" data-counturl="http://onthejvm.com//github/blog/2011/02/09/proposals-for-google-i-o-2012/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/01/21/why-is-my-layoutpanel-invisible-/" title="Previous Post: Why is my LayoutPanel invisible?!">&laquo; Why is my LayoutPanel invisible?!</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/04/27/getting-into-node/" title="Next Post: Getting into Node">Getting into Node &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/09/12/being-productive-on-os-x/">Being Productive on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/04/27/getting-into-node/">Getting Into Node</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/09/proposals-for-google-i-o-2012/">Proposals for Google I/O 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/01/21/why-is-my-layoutpanel-invisible-/">Why Is My LayoutPanel Invisible?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/11/08/gwt-data-bindings-part-1-first-look/">GWT Data Bindings Part 1 - First Look</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Arthur Maltson -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

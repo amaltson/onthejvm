@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Getting into Node - On the JVM</title>
+  <meta name="author" content="Arthur Maltson">
+
+  
+  <meta name="description" content="Updated 2011-04-27: forgot to add Backbone.js Most of the net is abuzz about Node,
+so it&rsquo;s hard to miss it. I&rsquo;ve been sitting on the &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://onthejvm.com//github/blog/2011/04/27/getting-into-node">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="On the JVM" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17031534-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">On the JVM</a></h1>
+  
+    <h2>Interesting happenings on (and off) the JVM</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:onthejvm.com//github" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Getting Into Node</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-27T00:00:00-04:00" pubdate data-updated="true">Apr 27<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><strong>Updated 2011-04-27:</strong> forgot to add Backbone.js</p>
+
+<p>Most of the net is <a href="http://mashable.com/2011/03/10/node-js/">abuzz</a> about <a href="http://nodejs.org/">Node</a>,
+so it&rsquo;s hard to miss it. I&rsquo;ve been sitting on the sidelines for several months now, but after
+attending a <a href="http://techtalksto.com/post/4087265108/the-video-from-techtalksto-episode-3-with-james">TechTalksTO talk on Node</a>
+given by James Duncan of Joyent, I&rsquo;m convinced I should dive in.</p>
+
+<h2>tl;dr version</h2>
+
+<ul>
+<li>Like C, Javascript is here to stay.</li>
+<li>Asynchronous (everywhere) is the future.</li>
+<li>Node is an exciting platform you have to check out.</li>
+</ul>
+
+
+<h2>What is Node?</h2>
+
+<p><a href="https://github.com/joyent/node">Node</a> is a server side Javascript
+implementation. As James put it, Node is the Google Chrome V8 Javascript
+engine and libev glued together. V8 provides the super fast Javascript
+virtual machine while libev contributes the
+<a href="http://en.wikipedia.org/wiki/Event_loop">event loop</a>. Of course, it&rsquo;s
+more complicated than that, but those are the basics.</p>
+
+<p>To make full use of this fast underpinning, Node follows a non-blocking,
+fully asynchronous programming mode, and encourages libraries to follow
+its example.</p>
+
+<h2>Why Node and Not Another Server Side Javascript?</h2>
+
+<p>The best known server side Javascript implementation is Rhino. However,
+as Dhanji Prasanna asked <a href="https://twitter.com/#!/dhanji/status/45307909709627393">on Twitter</a>,</p>
+
+<blockquote class="posterous_short_quote"><p>Are there any fast alternatives to Rhino on JVM?</p></blockquote>
+
+<p>Most of the server side Javascript implementations didn&rsquo;t
+grasp the importance of non-blocking, asynchronous I/O.</p>
+
+<h2>Why Asynchronous?</h2>
+
+<p>Asynchronous programming is usually associated with GUI development
+where everything is event driven and asynchronous. Why would you bring this to
+the server? Well, for one, blocking sucks. James made this point very potent
+by showing the amount of CPU cycles spent accessing each layer in a computer.
+Starting from L1 cache, L2 cache, RAM, disk and finally the network, each
+layer adds many orders of magnitude to the amount of time the CPU sits
+blocked, waiting for the call to return.</p>
+
+<p>That&rsquo;s why you want non-blocking I/O. As the Mashable
+article (above) said about the history of Node, Ryan Dhal tried the
+Node approach on a number of languages, in all cases failing, because of the
+culture of synchronous, blocking programming. But Javascript, being a
+front end language, has always been event driven and asynchronous.</p>
+
+<h2>How Much Does This Buy You? (Easy C10K)</h2>
+
+<p>What does this approach really buy you? As James pointed out, it buys
+you easy <em>C10K</em>. What&rsquo;s that you ask? 10 thousand concurrent
+connections. In fact, Node seems to be able to handle <a href="http://news.ycombinator.com/item?id=1088699">100K concurrent
+connections</a> on a single,
+mildly beefy server. In benchmarks, Node competes at the level of Nginx,
+a C based web framework built around the same principles. This is a
+testament to the power of V8.</p>
+
+<p>Asynchronous programming has been around for a long time, but has started
+to gain popularity recently. The benefits are evident, take the recent
+<a href="http://engineering.twitter.com/2011/04/twitter-search-is-now-3x-faster_1656.html">search speed increase at Twitter</a>
+after they adopted Netty and an asynchronous model.</p>
+
+<h2>Alright, I&rsquo;m sold. Now what?</h2>
+
+<p>Getting started with Node is easy, if you&rsquo;re on a Mac, I highly
+recommend installing it through <a href="http://mxcl.github.com/homebrew/">Homebrew</a>.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>brew install node</pre></div>
+</div>
+
+
+<p>Now try out Node&rsquo;s obligatory &ldquo;Hello, World!&rdquo;. Create <em>server.js</em>,</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>var http = require('http');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World\n');
+}).listen(8080, &quot;127.0.0.1&quot;);
+
+console.log('Server running at http://127.0.0.1:8080/');</pre></div>
+</div>
+
+
+<p>Then run</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>node server.js</pre></div>
+</div>
+
+
+<p>And voilà! Your first node app.</p>
+
+<h2>Great&hellip; Anything Else?</h2>
+
+<p>Tons. One of Node&rsquo;s biggest strengths is the huge community that&rsquo;s
+sprouted around it. As RedMonk discussed in their recent <a href="http://redmonk.com/sogrady/2011/03/17/framework-traction-on-hacker-news/">Programming
+Language Framework Traction on Hacker News</a>,
+&ldquo;What’s interesting is that the much younger Node.js is beginning to approach Django both in growth rate and visibility.&rdquo;
+This is evident by the number of new libraries and the speed at which
+they are being developed.</p>
+
+<p>The best way to install plugins is to use <a href="http://npmjs.org/">npm</a>. Some
+of the more popular plugins are,</p>
+
+<ul>
+<li><a href="https://github.com/visionmedia/express">express</a> &ndash; a Sinatra inspired
+framework.</li>
+<li><a href="https://github.com/learnboost/Socket.IO-node">socket.io</a> &ndash; server
+push support.</li>
+<li><a href="http://documentcloud.github.com/backbone/">backbone.js</a> &ndash; a popular
+MVC framework for Javascript, works with Node as well.</li>
+<li><a href="https://github.com/tmpvar/jsdom">jsdom</a> &ndash; web scraping 2.0, powered
+by Node.</li>
+<li><a href="https://github.com/chriso/node.io">node.io</a> &ndash; another scraping
+library, this looks even better then jsdom.</li>
+<li><a href="https://github.com/raycmorgan/Mu">Mustache</a> &ndash; template engine, used
+by Twitter (the JS version).</li>
+<li><a href="https://github.com/visionmedia/jade">Jade</a> &ndash; another template engine,
+inspired by HAML.</li>
+<li><a href="https://github.com/LearnBoost/stylus">stylus</a> &ndash; a SCSS or LESS
+inspired CSS engine.</li>
+<li><a href="https://github.com/LearnBoost/mongoose">mongoose</a> &ndash; MongoDB ORM
+layer.</li>
+</ul>
+
+
+<h2>A Look at Express</h2>
+
+<p>The Node ecosystem is growing by leaps and bounds, but I wanted to
+highlight one of the more popular libraries. Making web application
+development in Node easier, Express has become a trademark in most Node web apps.
+Let&rsquo;s see how easy it is to use.</p>
+
+<div class="CodeRay">
+  <div class="code"><pre>var app = express.createServer();
+
+app.get('/', function(req, res){
+    res.send('Hello World');
+});
+
+app.listen(8080);</pre></div>
+</div>
+
+
+<h2>Hosting</h2>
+
+<p>You&rsquo;re all excited to get started on Node, but you&rsquo;re wondering where to host
+your new Node application. There is a great
+<a href="http://stackoverflow.com/questions/3648993/where-can-i-host-a-node-js-app">stackoverflow question</a>
+that has a lot of options. Another recent contender in hosting Node applications is VMware with
+<a href="http://www.cloudfoundry.com/">Cloud Foundry</a>. I&rsquo;ve tried both Joyent&rsquo;s <a href="http://no.de">http://no.de</a>
+and Cloud Foundry.</p>
+
+<p>Node is an exciting platform that&rsquo;s experiencing explosive growth. If
+you&rsquo;ve been sitting on the fence, now is a great time to jump in.</p>
+
+<h2>More Resources</h2>
+
+<ul>
+<li><a href="https://github.com/joyent/node">Node Github project</a>, <a href="http://nodejs.org/">web page</a> and <a href="http://www.youtube.com/watch?v=jo_B4LTHi3I">Ryan Dahl&rsquo;s intro video</a>.</li>
+<li><a href="http://howtonode.org/">How To Node</a> &ndash; lots of great how-to articles</li>
+<li><a href="http://www.readwriteweb.com/hack/2011/04/6-free-e-books-on-nodejs.php">6 free ebooks on Node</a></li>
+<li><a href="http://www.infoq.com/articles/nodejs-frameworks">InfoQ covers Node ecosystem</a></li>
+<li><a href="http://oreilly.com/catalog/9780596517748">Javascript the Good Parts</a> &ndash; a great resource for learning the intricacies of Javascript</li>
+</ul>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Arthur Maltson</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-04-27T00:00:00-04:00" pubdate data-updated="true">Apr 27<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://onthejvm.com//github/blog/2011/04/27/getting-into-node/" data-via="" data-counturl="http://onthejvm.com//github/blog/2011/04/27/getting-into-node/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2011/02/09/proposals-for-google-i-o-2012/" title="Previous Post: Proposals for Google I/O 2012">&laquo; Proposals for Google I/O 2012</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/09/12/being-productive-on-os-x/" title="Next Post: Being Productive on OS X">Being Productive on OS X &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/09/12/being-productive-on-os-x/">Being Productive on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/04/27/getting-into-node/">Getting Into Node</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/09/proposals-for-google-i-o-2012/">Proposals for Google I/O 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/01/21/why-is-my-layoutpanel-invisible-/">Why Is My LayoutPanel Invisible?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/11/08/gwt-data-bindings-part-1-first-look/">GWT Data Bindings Part 1 - First Look</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Arthur Maltson -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

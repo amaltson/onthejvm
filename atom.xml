@@ -1,113 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>On the JVM</title>
-  <meta name="author" content="Arthur Maltson">
-
-  
-  <meta name="description" content="I&rsquo;ve been a Mac OS X user for about 3 years now, and a Linux user before that. I
-was originally attracted to the Mac not for the hardware ( &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://onthejvm.com//github">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="On the JVM" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-17031534-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">On the JVM</a></h1>
-  
-    <h2>Interesting happenings on (and off) the JVM</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:onthejvm.com//github" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[On the JVM]]></title>
+  <link href="http://onthejvm.com//github/atom.xml" rel="self"/>
+  <link href="http://onthejvm.com//github/"/>
+  <updated>2014-01-31T22:29:38-05:00</updated>
+  <id>http://onthejvm.com//github/</id>
+  <author>
+    <name><![CDATA[Arthur Maltson]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2011/09/12/being-productive-on-os-x/">Being Productive on OS X</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2011-09-12T00:00:00-04:00" pubdate data-updated="true">Sep 12<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&rsquo;ve been a Mac OS X user for about 3 years now, and a Linux user before that. I
+  <entry>
+    <title type="html"><![CDATA[Being Productive on OS X]]></title>
+    <link href="http://onthejvm.com//github/blog/2011/09/12/being-productive-on-os-x/"/>
+    <updated>2011-09-12T00:00:00-04:00</updated>
+    <id>http://onthejvm.com//github/blog/2011/09/12/being-productive-on-os-x</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve been a Mac OS X user for about 3 years now, and a Linux user before that. I
 was originally attracted to the Mac not for the hardware (although it&rsquo;s
 nice), but for the software. My first taste came from a home made Hackintosh,
 but I fell in love and wanted the real thing.</p>
@@ -244,42 +155,15 @@ photography, and this has been the best app I&rsquo;ve found so far. <em>paid</e
 <li><a href="http://www.getmiro.com/">Miro</a> &ndash; aggregates music and video from the web. <em>free/OSS</em></li>
 <li><a href="http://www.videolan.org/vlc/download-macosx.html">VLC</a> &ndash; video player. <em>free/OSS</em></li>
 </ul>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/04/27/getting-into-node/">Getting Into Node</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-27T00:00:00-04:00" pubdate data-updated="true">Apr 27<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><strong>Updated 2011-04-27:</strong> forgot to add Backbone.js</p>
+  <entry>
+    <title type="html"><![CDATA[Getting into Node]]></title>
+    <link href="http://onthejvm.com//github/blog/2011/04/27/getting-into-node/"/>
+    <updated>2011-04-27T00:00:00-04:00</updated>
+    <id>http://onthejvm.com//github/blog/2011/04/27/getting-into-node</id>
+    <content type="html"><![CDATA[<p><strong>Updated 2011-04-27:</strong> forgot to add Backbone.js</p>
 
 <p>Most of the net is <a href="http://mashable.com/2011/03/10/node-js/">abuzz</a> about <a href="http://nodejs.org/">Node</a>,
 so it&rsquo;s hard to miss it. I&rsquo;ve been sitting on the sidelines for several months now, but after
@@ -455,42 +339,15 @@ you&rsquo;ve been sitting on the fence, now is a great time to jump in.</p>
 <li><a href="http://www.infoq.com/articles/nodejs-frameworks">InfoQ covers Node ecosystem</a></li>
 <li><a href="http://oreilly.com/catalog/9780596517748">Javascript the Good Parts</a> &ndash; a great resource for learning the intricacies of Javascript</li>
 </ul>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/02/09/proposals-for-google-i-o-2012/">Proposals for Google I/O 2012</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-02-09T00:00:00-05:00" pubdate data-updated="true">Feb 9<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&rsquo;ll preempt this post by saying I wasn&rsquo;t able to register for Google I/O. Like many other people, I was caught up in the server crashes that happened the minute the tickets were announced. I have a feeling our corporate firewall had to do something with my inability to reach the website, and when I tried it on my Nexus One, I got the message that it was sold out (I&rsquo;ve looked for that PK session token, but I didn&rsquo;t get one because I wasn&rsquo;t able to get far enough in the registration). I&rsquo;ve been trying to go to Google I/O for 3 years now, and this year was the year I had everything in order for registration. I was very disappointed.</p>
+  <entry>
+    <title type="html"><![CDATA[Proposals for Google I/O 2012]]></title>
+    <link href="http://onthejvm.com//github/blog/2011/02/09/proposals-for-google-i-o-2012/"/>
+    <updated>2011-02-09T00:00:00-05:00</updated>
+    <id>http://onthejvm.com//github/blog/2011/02/09/proposals-for-google-i-o-2012</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ll preempt this post by saying I wasn&rsquo;t able to register for Google I/O. Like many other people, I was caught up in the server crashes that happened the minute the tickets were announced. I have a feeling our corporate firewall had to do something with my inability to reach the website, and when I tried it on my Nexus One, I got the message that it was sold out (I&rsquo;ve looked for that PK session token, but I didn&rsquo;t get one because I wasn&rsquo;t able to get far enough in the registration). I&rsquo;ve been trying to go to Google I/O for 3 years now, and this year was the year I had everything in order for registration. I was very disappointed.</p>
 
 <h1>The Stampede</h1>
 
@@ -527,42 +384,15 @@ you&rsquo;ve been sitting on the fence, now is a great time to jump in.</p>
 <h2>Dealing with Freebies</h2>
 
 <p>To discourage those that register for the conference just to get a freebie, I love <a href="http://justinsb.posterous.com/why-google-shouldnt-give-away-anything-this-y">Justin&rsquo;s idea</a> of not giving out a freebie and letting everyone who wants a refund get one. Google I/O brings more then enough to the table, a free phone shouldn&rsquo;t be your main deciding factor.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/01/21/why-is-my-layoutpanel-invisible-/">Why Is My LayoutPanel Invisible?!</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-21T00:00:00-05:00" pubdate data-updated="true">Jan 21<span>st</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>This is just a quick post in the hope that I can help others avoid <em>hours</em> debugging an &ldquo;issue&rdquo; I recently had. I was working through a new application that I&rsquo;m building using the new MVP framework in GWT 2.1, and for the life in me couldn&rsquo;t understand why the <code>LayoutPanel</code> I was adding to the page was not invisible. The code could be as simple as this.</p>
+  <entry>
+    <title type="html"><![CDATA[Why is my LayoutPanel invisible?!]]></title>
+    <link href="http://onthejvm.com//github/blog/2011/01/21/why-is-my-layoutpanel-invisible-/"/>
+    <updated>2011-01-21T00:00:00-05:00</updated>
+    <id>http://onthejvm.com//github/blog/2011/01/21/why-is-my-layoutpanel-invisible-</id>
+    <content type="html"><![CDATA[<p>This is just a quick post in the hope that I can help others avoid <em>hours</em> debugging an &ldquo;issue&rdquo; I recently had. I was working through a new application that I&rsquo;m building using the new MVP framework in GWT 2.1, and for the life in me couldn&rsquo;t understand why the <code>LayoutPanel</code> I was adding to the page was not invisible. The code could be as simple as this.</p>
 
 <p><script src="https://gist.github.com/789106.js"></script></p>
 
@@ -583,42 +413,15 @@ you&rsquo;ve been sitting on the fence, now is a great time to jump in.</p>
 <p>The panels described above are best used for defining your application&rsquo;s outer structure — that is, the parts that are the least &ldquo;document-like&rdquo;. You should continue to use basic widgets and HTML structure for those parts for which the HTML/CSS layout algorithm works well. In particular, consider using UiBinder templates to directly use HTML wherever that makes sense.</p></blockquote>
 
 <p>The documentation points out the misuse of <code>*LayoutPanel</code>. However, I was thinking a good usability feature would be to display a warning that the <code>*LayoutPanel</code> is being abused. This warning should probably be in Development Mode. If you&rsquo;d like to see something along those lines, please <a href="http://code.google.com/p/google-web-toolkit/issues/detail?id=5874">star the issue I created</a></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/11/08/gwt-data-bindings-part-1-first-look/">GWT Data Bindings Part 1 - First Look</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-08T00:00:00-05:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>With the <a href="http://googlewebtoolkit.blogspot.com/2010/10/announcing-final-release-of-gwt-21.html">release of GWT 2.1</a>, I&rsquo;m going to try to put together a blog post about each of the new features. We&rsquo;ll start off with my favourite addition, the data binding framework. If you are interested in GWT 2.1 coverage, make sure to check out <a href="http://tbroyer.posterous.com/">Thomas Broyer&rsquo;s blog</a>, which covers <a href="http://tbroyer.posterous.com/gwt-21-places">Places</a> <a href="http://tbroyer.posterous.com/gwt-21-places-part-ii">extensively</a> and <a href="http://tbroyer.posterous.com/gwt-21-activities">Activities</a> with <a href="http://tbroyer.posterous.com/gwt-21-places-activities-what-changed-between">nesting</a>. Last, but certainly not least, the excellent <a href="http://code.google.com/webtoolkit/doc/latest/DevGuide.html">GWT documentation</a> has been updated to include 2.1 features.</p>
+  <entry>
+    <title type="html"><![CDATA[GWT Data Bindings Part 1 - First Look]]></title>
+    <link href="http://onthejvm.com//github/blog/2010/11/08/gwt-data-bindings-part-1-first-look/"/>
+    <updated>2010-11-08T00:00:00-05:00</updated>
+    <id>http://onthejvm.com//github/blog/2010/11/08/gwt-data-bindings-part-1-first-look</id>
+    <content type="html"><![CDATA[<p>With the <a href="http://googlewebtoolkit.blogspot.com/2010/10/announcing-final-release-of-gwt-21.html">release of GWT 2.1</a>, I&rsquo;m going to try to put together a blog post about each of the new features. We&rsquo;ll start off with my favourite addition, the data binding framework. If you are interested in GWT 2.1 coverage, make sure to check out <a href="http://tbroyer.posterous.com/">Thomas Broyer&rsquo;s blog</a>, which covers <a href="http://tbroyer.posterous.com/gwt-21-places">Places</a> <a href="http://tbroyer.posterous.com/gwt-21-places-part-ii">extensively</a> and <a href="http://tbroyer.posterous.com/gwt-21-activities">Activities</a> with <a href="http://tbroyer.posterous.com/gwt-21-places-activities-what-changed-between">nesting</a>. Last, but certainly not least, the excellent <a href="http://code.google.com/webtoolkit/doc/latest/DevGuide.html">GWT documentation</a> has been updated to include 2.1 features.</p>
 
 <p>One of the killer features in GWT 2.1 is data bindings. The GWT blog put it best.</p>
 
@@ -674,42 +477,15 @@ you&rsquo;ve been sitting on the fence, now is a great time to jump in.</p>
 <li><p><a href="http://code.google.com/webtoolkit/doc/latest/DevGuideUiEditors.html">GWT editor documentation</a>.</p></li>
 <li><p><a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/editor/client/package-summary.html">GWT editor Javadoc</a></p></li>
 </ul>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/10/19/mocking-your-gwt-widgets-without-gwttestcase/">Mocking Your GWT Widgets, Without GWTTestCase</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-19T00:00:00-04:00" pubdate data-updated="true">Oct 19<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>When unit testing, mocking out your dependencies is standard practice. GWT is no exception. However, as you will discover, mocking your UI in GWT doesn&rsquo;t work as you might expect.</p>
+  <entry>
+    <title type="html"><![CDATA[Mocking your GWT widgets, without GWTTestCase]]></title>
+    <link href="http://onthejvm.com//github/blog/2010/10/19/mocking-your-gwt-widgets-without-gwttestcase/"/>
+    <updated>2010-10-19T00:00:00-04:00</updated>
+    <id>http://onthejvm.com//github/blog/2010/10/19/mocking-your-gwt-widgets-without-gwttestcase</id>
+    <content type="html"><![CDATA[<p>When unit testing, mocking out your dependencies is standard practice. GWT is no exception. However, as you will discover, mocking your UI in GWT doesn&rsquo;t work as you might expect.</p>
 
 <p>Before we start with a sample, I just wanted to mention some best practices around GWT. It&rsquo;s generally considered a best practice to use the Model-View-Presenter pattern (<a href="http://code.google.com/webtoolkit/articles/mvp-architecture.html">Part I</a>, <a href="http://code.google.com/webtoolkit/articles/mvp-architecture-2.html">Part II</a>, <a href="http://code.google.com/webtoolkit/doc/trunk/DevGuideMvpActivitiesAndPlaces.html">GWT 2.1 method</a>). When you use this pattern, you avoid writing tests for your Views because they don&rsquo;t contain any logic.</p>
 
@@ -744,78 +520,24 @@ Caused by: java.lang.UnsupportedOperationException: ERROR: GWT.create() is only 
 <p><script src="https://gist.github.com/634326.js"></script></p>
 
 <p>Viola! Your tests pass as you expect them to. Hope that helps anyone doing UI unit testing in GWT.</p>
-</div>
+]]></content>
+  </entry>
   
+  <entry>
+    <title type="html"><![CDATA[GWT: Defacto for Creating Rich Web Applications?]]></title>
+    <link href="http://onthejvm.com//github/blog/2010/09/27/gwt-defacto-for-creating-rich-web-applications-/"/>
+    <updated>2010-09-27T00:00:00-04:00</updated>
+    <id>http://onthejvm.com//github/blog/2010/09/27/gwt-defacto-for-creating-rich-web-applications-</id>
+    <content type="html"><![CDATA[Last year there was some fervent discussion on the GWT contributor mailing list on <a href="http://groups.google.com/group/google-web-toolkit-contributors/browse_thread/thread/6d4339fb17803e/114aecb2d910846f" target="_blank">supporting Scala</a> as a language alternative for writing GWT applications. The discussion was interesting, but I hadn&#39;t heard anything since and had assumed nothing happened. Turns out, I was <a href="http://scalagwt.gogoego.com/index.html" target="_blank">wrong</a>. While I can&#39;t claim to know much about Scala, the idea of writing GWT based applications in another language sounded really interesting. Reading on, I found an even more exciting idea, in Jribble. As put on the GWT Scala site.<br /> <p /><div><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i> Java source code does not want to be a target language.  It has restrictions against logically sound constructs that would be bad Java practice to write by hand.  Lex Spoon proposed a plan for an intermediate step, &quot;Loose Java,&quot; which we have christened Jribble (pronounced &quot;Dribble&quot;).</i></blockquote> <blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i><br /></i></blockquote><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i> Jribble is essentially Java with the interfering restrictions removed.  Lex: &quot;It&#39;s like a puddle of Java. It&#39;s also like drivel, which is appropriate enough for a language no one writes and no one reads. Computers can entertain themselves with it well enough.&quot;</i></blockquote> <p /><div>And what it could eventually lead to.</div><p /><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i> The Jribble concept is interesting as a target language, because it&#39;s likely to be an effective target for other JVM languages, not only Scala.  Any language that easily produces valid JVM bytecodes, but struggles to produce valid Java, might take advantage of Jribble as a bridge to GWT Javascript compilation.</i></blockquote> <p /><div><i>Other JVM languages?</i> Groovy, JRuby, Clojure anyone?</div><p /><div>GWT is becoming the platform of choice for Java developers*. More so with the <a href="http://googlewebtoolkit.blogspot.com/2010/09/google-relaunches-instantiations.html" target="_blank">Instantiation purchase</a> and collaboration with <a href="http://code.google.com/webtoolkit/business.html" target="_blank">VMware/SpringSource</a>. But the future could be even brighter. GWT could be the default compiler for writing rich web applications in any language of your choice. I&#39;ll be very excited to see how this evolves.</div> <p /><div>* I&#39;m just guessing here based on the 23000+ mailing list subscriptions and 2000+ tags on Stackoverflow (when compared with other frameworks).</div> </div>
+]]></content>
+  </entry>
   
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/09/27/gwt-defacto-for-creating-rich-web-applications-/">GWT: Defacto for Creating Rich Web Applications?</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-27T00:00:00-04:00" pubdate data-updated="true">Sep 27<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Last year there was some fervent discussion on the GWT contributor mailing list on <a href="http://groups.google.com/group/google-web-toolkit-contributors/browse_thread/thread/6d4339fb17803e/114aecb2d910846f" target="_blank">supporting Scala</a> as a language alternative for writing GWT applications. The discussion was interesting, but I hadn&#39;t heard anything since and had assumed nothing happened. Turns out, I was <a href="http://scalagwt.gogoego.com/index.html" target="_blank">wrong</a>. While I can&#39;t claim to know much about Scala, the idea of writing GWT based applications in another language sounded really interesting. Reading on, I found an even more exciting idea, in Jribble. As put on the GWT Scala site.<br /> <p /><div><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i> Java source code does not want to be a target language.  It has restrictions against logically sound constructs that would be bad Java practice to write by hand.  Lex Spoon proposed a plan for an intermediate step, &quot;Loose Java,&quot; which we have christened Jribble (pronounced &quot;Dribble&quot;).</i></blockquote> <blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i><br /></i></blockquote><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i> Jribble is essentially Java with the interfering restrictions removed.  Lex: &quot;It&#39;s like a puddle of Java. It&#39;s also like drivel, which is appropriate enough for a language no one writes and no one reads. Computers can entertain themselves with it well enough.&quot;</i></blockquote> <p /><div>And what it could eventually lead to.</div><p /><blockquote class="gmail_quote" style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0.8ex; border-left-width: 1px; border-left-color: rgb(204, 204, 204); border-left-style: solid; padding-left: 1ex;"> <i> The Jribble concept is interesting as a target language, because it&#39;s likely to be an effective target for other JVM languages, not only Scala.  Any language that easily produces valid JVM bytecodes, but struggles to produce valid Java, might take advantage of Jribble as a bridge to GWT Javascript compilation.</i></blockquote> <p /><div><i>Other JVM languages?</i> Groovy, JRuby, Clojure anyone?</div><p /><div>GWT is becoming the platform of choice for Java developers*. More so with the <a href="http://googlewebtoolkit.blogspot.com/2010/09/google-relaunches-instantiations.html" target="_blank">Instantiation purchase</a> and collaboration with <a href="http://code.google.com/webtoolkit/business.html" target="_blank">VMware/SpringSource</a>. But the future could be even brighter. GWT could be the default compiler for writing rich web applications in any language of your choice. I&#39;ll be very excited to see how this evolves.</div> <p /><div>* I&#39;m just guessing here based on the 23000+ mailing list subscriptions and 2000+ tags on Stackoverflow (when compared with other frameworks).</div> </div>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/06/17/obligatory-introduction/">Obligatory Introduction</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-17T00:00:00-04:00" pubdate data-updated="true">Jun 17<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h1>On Java</h1>
+  <entry>
+    <title type="html"><![CDATA[Obligatory Introduction]]></title>
+    <link href="http://onthejvm.com//github/blog/2010/06/17/obligatory-introduction/"/>
+    <updated>2010-06-17T00:00:00-04:00</updated>
+    <id>http://onthejvm.com//github/blog/2010/06/17/obligatory-introduction</id>
+    <content type="html"><![CDATA[<h1>On Java</h1>
 
 <p>As the name suggests, I&rsquo;m mainly a Java developer. I like Java. I know, it&rsquo;s falling out of fashion with today&rsquo;s web hipsters, but there&rsquo;s a lot to like about the language and its environment. For one, I find the static typing bit to be very helpful in a larger team environment, especially when you&rsquo;re trying to piece together how someone else&rsquo;s application works. But I think Java really wins out in the ecosystem. The sheer amount of active, high quality, tools and libraries available, is often overwhelming. One could argue that this can be a disadvantage, but I believe that the more choice a developer has, the better.</p>
 
@@ -834,84 +556,7 @@ Caused by: java.lang.UnsupportedOperationException: ERROR: GWT.create() is only 
 <h1>On what&rsquo;s the point already?</h1>
 
 <p>Ah, the point&hellip; right. The point is, I&rsquo;m really into the tech world. I love programming. I love gadgets. So what you&rsquo;ll find on this blog is a lot about the web, Google Web Toolkit and other Google technologies, Spring and Hibernate, new languages that I explore, perhaps some gadget reviews and who knows what else. It&rsquo;s definitely an exciting time to be on the JVM. Stay tuned!</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2011/09/12/being-productive-on-os-x/">Being Productive on OS X</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/04/27/getting-into-node/">Getting Into Node</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/02/09/proposals-for-google-i-o-2012/">Proposals for Google I/O 2012</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2011/01/21/why-is-my-layoutpanel-invisible-/">Why Is My LayoutPanel Invisible?!</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2010/11/08/gwt-data-bindings-part-1-first-look/">GWT Data Bindings Part 1 - First Look</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - Arthur Maltson -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-</body>
-</html>
+</feed>

@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>GWT Data Bindings Part 1 - First Look - On the JVM</title>
+  <meta name="author" content="Arthur Maltson">
+
+  
+  <meta name="description" content="With the release of GWT 2.1, I&rsquo;m going to try to put together a blog post about each of the new features. We&rsquo;ll start off with my &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://onthejvm.com//github/blog/2010/11/08/gwt-data-bindings-part-1-first-look">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="On the JVM" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-17031534-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">On the JVM</a></h1>
+  
+    <h2>Interesting happenings on (and off) the JVM</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:onthejvm.com//github" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">GWT Data Bindings Part 1 - First Look</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-08T00:00:00-05:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>With the <a href="http://googlewebtoolkit.blogspot.com/2010/10/announcing-final-release-of-gwt-21.html">release of GWT 2.1</a>, I&rsquo;m going to try to put together a blog post about each of the new features. We&rsquo;ll start off with my favourite addition, the data binding framework. If you are interested in GWT 2.1 coverage, make sure to check out <a href="http://tbroyer.posterous.com/">Thomas Broyer&rsquo;s blog</a>, which covers <a href="http://tbroyer.posterous.com/gwt-21-places">Places</a> <a href="http://tbroyer.posterous.com/gwt-21-places-part-ii">extensively</a> and <a href="http://tbroyer.posterous.com/gwt-21-activities">Activities</a> with <a href="http://tbroyer.posterous.com/gwt-21-places-activities-what-changed-between">nesting</a>. Last, but certainly not least, the excellent <a href="http://code.google.com/webtoolkit/doc/latest/DevGuide.html">GWT documentation</a> has been updated to include 2.1 features.</p>
+
+<p>One of the killer features in GWT 2.1 is data bindings. The GWT blog put it best.</p>
+
+<blockquote class="posterous_medium_quote"><p>Data bound views &ndash; An app that doesn’t allow end users to view or edit data isn’t terribly useful, now, is it? With GWT 2.1’s Data Editors, developers can create views that are generated from their app’s data model. These views are completely customizable, and handle all of the nasty work of syncing change sets between the client and server.</p></blockquote>
+
+<p>While data bindings are not new by any means, you usually find them in more traditional web frameworks like Seam, Spring Web Flow, etc. Now, this powerful paradigm has found it&rsquo;s way into the best (IMHO) RIA framework.</p>
+
+<h2>Single Binding</h2>
+
+<p>Let&rsquo;s cover the simplest case, data binding a single Java bean. For example, a simple <code>Email</code> POJO.</p>
+
+<p><script src="https://gist.github.com/656826.js"></script></p>
+
+<p>The <code>Serializable</code> implementation is only required for GWT-RPC calls, not the Editors framework. Also note that these objects do need getters and setters, you can&rsquo;t modify immutable objects. Immutable objects can only be used for display.</p>
+
+<p>Now you need a GWT widget to represent the <code>Email</code> object.</p>
+
+<p><script src="https://gist.github.com/660486.js"></script></p>
+
+<p><code>EmailEditor</code> is a standard GWT widget, the only new piece is the <code>Editor&lt;Email&gt;</code> bit. This is the cue telling GWT that it is indeed a data bindable widget. If the field in the widget is named the same as the corresponding POJO field, the binding is automagic. Otherwise, you can use the <code>@Path("")</code> annotation to indicate the name of the field (or reach into nested values).</p>
+
+<p>The final piece in the data binding story is the interface that will be GWT generated with the GWT.create() call. This does the required code generation to do automatic data binding.</p>
+
+<p><script src="https://gist.github.com/660479.js"></script></p>
+
+<p>This code could either go in some new class, or could be stuffed into the Presenter component if you follow the MVP pattern. Regardless, that&rsquo;s all you need to bind to a single object.</p>
+
+<p>Of course, in most cases, you have an entire object graph, so lets move on to binding a whole object graph.</p>
+
+<h2>Nested Binding</h2>
+
+<p>It turns out that data binding an object graph is as easy as binding to a single object. Take the <code>Customer</code> object.</p>
+
+<p><script src="https://gist.github.com/665651.js"></script></p>
+
+<p>Again, a regular POJO like we&rsquo;ve seen before, but this time it has an nested <code>Email</code> and <code>Address</code>. Let&rsquo;s take a look at what the <code>Editor</code> looks like.</p>
+
+<p><script src="https://gist.github.com/665655.js"></script></p>
+
+<p>As you would expect, editing the nested objects only requires including the editors for those nested objects. Finally, instead of having a <code>Driver</code> for each <code>Editor</code>, you create one <code>Driver</code> for the top-level <code>Editor</code>. In this case we define the driver in the entry point.</p>
+
+<p><script src="https://gist.github.com/665656.js"></script></p>
+
+<p>That&rsquo;s about it. All your existing boilerplate that does data binding evaporates with some GWT generator magic.</p>
+
+<p>We&rsquo;re done for now. Part 2 will dive deeper into <code>Editors</code> and explain using interfaces, integration with GIN and using <code>Editors</code> with the new MVP framework.</p>
+
+<h2>More Information</h2>
+
+<p>Some additional documentation to check out for now.</p>
+
+<ul>
+<li><p><a href="http://code.google.com/webtoolkit/doc/latest/DevGuideUiEditors.html">GWT editor documentation</a>.</p></li>
+<li><p><a href="http://google-web-toolkit.googlecode.com/svn/javadoc/2.1/com/google/gwt/editor/client/package-summary.html">GWT editor Javadoc</a></p></li>
+</ul>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Arthur Maltson</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-08T00:00:00-05:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://onthejvm.com//github/blog/2010/11/08/gwt-data-bindings-part-1-first-look/" data-via="" data-counturl="http://onthejvm.com//github/blog/2010/11/08/gwt-data-bindings-part-1-first-look/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2010/10/19/mocking-your-gwt-widgets-without-gwttestcase/" title="Previous Post: Mocking your GWT widgets, without GWTTestCase">&laquo; Mocking your GWT widgets, without GWTTestCase</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2011/01/21/why-is-my-layoutpanel-invisible-/" title="Next Post: Why is my LayoutPanel invisible?!">Why is my LayoutPanel invisible?! &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/09/12/being-productive-on-os-x/">Being Productive on OS X</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/04/27/getting-into-node/">Getting Into Node</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/09/proposals-for-google-i-o-2012/">Proposals for Google I/O 2012</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/01/21/why-is-my-layoutpanel-invisible-/">Why Is My LayoutPanel Invisible?!</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2010/11/08/gwt-data-bindings-part-1-first-look/">GWT Data Bindings Part 1 - First Look</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Arthur Maltson -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
